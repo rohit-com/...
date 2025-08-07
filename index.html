@@ -1,137 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-        <meta name="viewport"
-            content="width=device-width, initial-scale=1.0">
-    <title>Rohit Rajput - Portfolio</title>
-    <link
-    href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
-        <style>
+<head>
+  <meta charset="UTF-8">
+  <title>Rohit Rajput</title>
+  <style>
     body {
-    background-color: #0f172a;
-    font-family: 'Segoe UI';
-    color: #f8fafc;
-}
-            .image {
-                width: 150px;
-                max-width: 400px;
-                object-ft: cover;
-                display: block;
-                margin: 10px auto;
-            border-radius: 10px; 
-            border: border-box;
-            padding: 2px; }
-.home {
-    text-align: center;
-    background-color: #1e293b;
-    border: 1px solid #334155;
-    padding: 10px;
-    object-fit: contain;
-    border-radius: 4px;
-    font-weight: bold;
-    color: #f1f5f9;
-    margin: 10px auto;
-    width: 350px;
-    font-family: 'poppins' , sans-serif;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .main-container {
+      position: relative;
+      min-height: 1000px;
+      width: 100%;
+      background-color: #000C6C;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .right-curve {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 50%;
+      background-color: #9600DA;
+      clip-path: polygon(
+        20% 0,
+        100% 0,
+        100% 100%,
+        20% 100%,
+        0% 50%
+      );
+    }
+
+    h1 {
+      position: relative;
+      color: white;
+      padding: 50px;
+      z-index: 1;
+      margin: 0;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Main content layout */
+    .content-layout {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      padding: 0 50px;
+    }
+
+    /* Left side content */
+    .left-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      flex: 1;
+      max-width: 500px;
+    }
+
+    /* Right side content */
+    .right-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      flex: 1;
+      max-width: 500px;
+    }
+
+    /* Common card styling */
+    .card {
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .about {
+      background: rgba(255, 255, 255, 0.1);
+      text-align: left;
+    }
+
+    .skills {
+      background: rgba(150, 0, 218, 0.2);
+      text-align: left;
+    }
+
+    /* Right side sections */
+    .projects {
+      background: rgba(255, 193, 7, 0.2);
+      text-align: left;
+    }
+
+    .contact {
+      background: rgba(76, 175, 80, 0.2);
+      text-align: left;
+    }
+
+    .achievements {
+      background: rgba(255, 87, 34, 0.2);
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    /* Headings */
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .about h2, .skills h2 { color: chocolate; }
+    .projects h2 { color: #ffd700; }
+    .contact h2 { color: #4caf50; }
+    .achievements h2 { color: #ff5722; }
+
+    /* Text styling */
+    .card p, .card li {
+      color: aliceblue;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card li {
+      margin-bottom: 12px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .card li:hover {
+      transform: translateX(5px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Project links */
+    .project-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: rgba(255, 215, 0, 0.3);
+      color: #ffd700;
+      text-decoration: none;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+      background: rgba(255, 215, 0, 0.5);
+      transform: scale(1.05);
+    }
+
+    /* Contact links */
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(5px);
+    }
+
+    .contact-item a {
+      color: #4caf50;
+      text-decoration: none;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .content-layout {
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 20px;
+      }
+      
+      .left-content, .right-content {
+        max-width: 100%;
+      }
+      
+      .right-curve {
+        width: 70%;
+      }
+      
+      h1 {
+        font-size: 2rem;
+        padding: 30px 20px;
+      }
+    }
+    p {
+      text-align: center;
+      height: 90px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <h1>Welcome to My Portfolio Website 💌🫀</h1>
+    <div class="right-curve"></div>
     
-}
-.vision {
-    text-align: left;
-    font-weight: bold;
-    color:  #f78166;
-}
-.skills {
-    text-align: left;
-    font-weight: bold;
-    color:  #f78166;
-}
-.about {
-    text-align: center;
-    font-weight: bold;
-    color:  #f78166;
-}
-.contact {
-    text-align: left;
-    font-weight: bold;
-    color:  #f78166;
-}
-    .profile {
-        text-align: center;
-        font-family: bold; 
-    }
-    .video {
-        width:350px;
-        height:"400"
-        margin: auto;
-}
-    .viideo {
-        width:350px;
-        height:"400";
-        margin: auto;
-    }
-    .link { text-align: left;
-           color:#f78166;
-           font-weight: bold; 
-          }
-            </style>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-   </head>
-    <body>
-          <h1 class="profile">ROHIT RAJPUT</h1>
-        <br />
-           <h1 class="home">WELCOME TO MY WEBSITE</h1> 
-        <div class="iamge"> <img src="https://i.ibb.co/5XbnbCG3/IMG-20240612-183931-436.jpg" height="400"> </div>
-       <ul></li> <P>Rohit Rajput</P></ul></li>
-        <br />
-            <h2 class="vision">My vision</h2>
-              <hr />
-          <p>I don't just want to work with technology — I want to bend it to create stories, impact, and freedom.  
-I believe success isn't about noise — it's about results, respect, and relentless improvement.</p>
-          <hr />
-          <h2 class="skills">Skills</h2>
-        <li>Html & Css</li>
-        <li>Java & Java script basics</li>
-         <h2 class="about">About Me</h2>
-          <hr />
-              <p> I’m Rohit Rajput — a student of Cloud Computing with a strong passion for web development,  
-UI design, and modern technologies. I believe in clean code, strong logic, and creative expression.  
-Currently based in Delhi, I spend my time building projects, learning every day, and working toward becoming  
-a full-stack developer with expertise in cloud infrastructure. </p>
-        <h1 class="links">MY PROJECTS</h1>
-       <ol><li> <a href="https://rixs-mwke.github.io/mehndi.rohit/" title="PROJECT" target="_blank" style="color: white; font-weight:bold; text-decoration:underline;"> Mehndi Shop </a>
-        <br />
-        <a href="https://rohit-com.github.io/S/" title="projct" target="_blank" style="color: white;"> Sports Shop </a> </li> </ol>
-        <br />
-     <h1>Video</h1>
-       <div class="video"> <iframe src="https://www.youtube.com/embed/UYmvFzDuO5k" 
-            title="The Most Beautiful Earth Scenes Captured in 4K HDR (60FPS) |" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-     </div>
-       <ul><li><p>This video is for testing</p></ul></li>
-         <hr />
-        <h1>Video</h1>
-      <div class="viideo">  <iframe 
-            src="https://www.youtube.com/embed/EDOWDqn8zpw" 
-            title="Next Level of Dolby Vision 16K HDR 240fps" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="content-layout">
+      <!-- LEFT SIDE -->
+      <div class="left-content">
+        <div class="about card">
+          <h2>About Me</h2>
+          <p>I'm Rohit, a tech enthusiast from Delhi, currently pursuing a diploma in Cloud Computing at Jetking.  
+    I merge clean design with smart logic to craft responsive, user-friendly web experiences.  
+    Always learning. Always building. Always leveling up.</p>   
+  </div>
+ <div class="skills card">
+          <h2>Skills</h2>
+          <ul>
+            <li>☁️ Cloud Computing (AWS, Azure basics)</li>
+            <li>💻 Web Development (HTML, CSS, JavaScript)</li>
+            <li>🛠️ Git & GitHub (version control pro)</li>
+            <li>🧠 Problem Solving + Logic Building</li>
+          </ul>
+        </div>
       </div>
-       <ul><li><p>This video is for testing</p></li></ul>
-              <h2 class="contact">Contact Me</h2>
-            <p>
-            <a href="https://instagram.com/xtreamerohit" class="button" target="_blank">
-                <i class="fab fa-instagram" 
-                    style="font-size: 28px; color: #e1306c;"></i> </a>
-                <br />
-                <br />
-            <a href="mailto:rs5636475@gmail.com" title="Email"> <i class="fas fa-envelope" styele="font-size: 28px; color: #f8fafc;"> </i>
-            </a>
-        </p>
-          <hr />
-        <p>Thank you.</p>
-        <p style="text-align: center; color: #f1f5f9;">
-            © 2025 Rohit Rajput. All rights reserved. </p>
- </body>
+ <!-- RIGHT SIDE -->
+      <div class="right-content">
+        <div class="projects card">
+          <h2>🚀 Projects</h2>
+          <ul>
+            <li>
+              <strong>Personal Portfolio Website</strong><br>
+              Modern responsive website with curved backgrounds
+              <a href="https://rohit-com.github.io/.s/" class="project-link">View Project</a>
+            </li>
+          </ul>
+        </div>
+  <div class="contact card">
+          <h2>📞 Let's Connect</h2>
+          <div class="contact-item">
+            <span>📧</span>
+            <a href="mailto:ra5636475@gmail.com">Email</a>
+          </div>
+          <div class="contact-item">
+            <span>🐱</span>
+            <a href="https://instagram.com/xtreamerohit/" target="_blank">Instagram</a>
+          </div>
+        </div>
+        <div class="achievements card">
+          <h2>🏆 Achievements</h2>
+          <ul>
+            <li>🎓 Enrolled in Cloud Computing Course</li>
+            <li>💡 Built first responsive website</li>
+            <li>🔧 Learning Git version control</li>
+            <li>📚 Exploring AWS fundamentals</li>
+            <li>🌟 Passionate about problem solving</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>© Copy Right All Rights Are Reserved.</p>
+</body>
 </html>
