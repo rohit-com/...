@@ -1671,49 +1671,6 @@
                 element.style.transform = `translate3d(0, ${yPos}px, 0)`;
             });
         });
-
-        // Add some interactive cursor effects
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.querySelector('.cursor');
-            if (!cursor) {
-                const newCursor = document.createElement('div');
-                newCursor.className = 'cursor';
-                newCursor.style.cssText = `
-                    position: fixed;
-                    width: 20px;
-                    height: 20px;
-                    background: rgba(99, 102, 241, 0.3);
-                    border-radius: 50%;
-                    pointer-events: none;
-                    z-index: 9999;
-                    transition: transform 0.1s ease;
-                `;
-                document.body.appendChild(newCursor);
-            }
-            
-            const cursor_element = document.querySelector('.cursor');
-            cursor_element.style.left = e.clientX - 10 + 'px';
-            cursor_element.style.top = e.clientY - 10 + 'px';
-        });
-
-        // Add hover effects to interactive elements
-        document.querySelectorAll('.btn, .project-card, .skill-card, .contact-method').forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                const cursor = document.querySelector('.cursor');
-                if (cursor) {
-                    cursor.style.transform = 'scale(2)';
-                    cursor.style.background = 'rgba(99, 102, 241, 0.6)';
-                }
-            });
-
-            element.addEventListener('mouseleave', () => {
-                const cursor = document.querySelector('.cursor');
-                if (cursor) {
-                    cursor.style.transform = 'scale(1)';
-                    cursor.style.background = 'rgba(99, 102, 241, 0.3)';
-                }
-            });
-        });
     </script>
 </body>
 </html>
